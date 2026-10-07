@@ -1,11 +1,49 @@
+'use client';
+import { authClient } from '@/lib/auth-client';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const SignInPage = () => {
+    const onSubmit = async (e:React.SubmitEvent<HTMLElement>) => {
+          e.preventDefault()
+          const formData = new FormData(e.target)
+          const user = Object.fromEntries(formData.entries()) as {email: string, password: string,}
+        //   console.log(user);
+        const {data, error} = await authClient.signIn.email({
+            ...user,
+            callbackURL: "/"
+         })
+    
+         if(data){
+            toast.success("Sign In Succesfully")
+            console.log(data)
+            // redirect('/')
+            
+         }
+         if(error){
+            toast.error(error.message)
+            console.log(error)
+         }
+        }
+       const handleGoogleSignIn = async() => {
+        const data = await authClient.signIn.social({
+        provider: "google",
+          });
+          console.log(data)
+       }
+     
+
+       const handleGithubSignIn = async ()=>{
+         const data = await authClient.signIn.social({
+        provider: "github",
+          });
+          console.log(data)
+
+       }
     return (
          <div className="flex flex-col items-center justify-center mt-5">
       <h2 className="text-2xl font-bold text-red-700">সাইন ইন</h2>
-      {/* <form onSubmit={onSubmit}> */}
-      <form>
+      <form onSubmit={onSubmit}>
         <fieldset className="fieldset   rounded-box w-md">
 
           <label className="label">ইমেইল</label>
@@ -29,8 +67,8 @@ const SignInPage = () => {
         </fieldset>
       </form>
 
-         {/* <button onClick={handleGoogleSignIn} className="btn ">Sign In With Google</button>
-      <button onClick={handleGithubSignIn} className="btn ">Sign In With Github</button> */}
+         <button onClick={handleGoogleSignIn} className="btn ">Sign In With Google</button>
+      <button onClick={handleGithubSignIn} className="btn ">Sign In With Github</button>
     </div>
     );
 };

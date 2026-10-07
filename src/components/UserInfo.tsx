@@ -1,5 +1,6 @@
 'use client';
 import { authClient } from '@/lib/auth-client';
+import Link from 'next/link';
 import React from 'react';
 
 const UserInfo = () => {
@@ -29,19 +30,23 @@ const UserInfo = () => {
                 </div> 
                  ) : (
                 <div className="flex shrink-0 items-center gap-3 sm:gap-6">
+         <Link href={'/signin'}>
           <button
             type="button"
             className="rounded-lg px-3 py-2.5 font-semibold text-gray-800 transition-colors hover:bg-green-50 hover:text-green-700"
           >
             সাইন ইন
           </button>
+         </Link>
 
+         <Link href={'/signup'}>
           <button
             type="button"
             className="rounded-xl bg-green-700 px-4 py-2.5 font-semibold text-white shadow-md transition-all duration-200 hover:bg-green-800 hover:shadow-lg active:scale-95 sm:px-5"
           >
             সাইন আপ
           </button>
+         </Link>
         </div>
             )}
             
