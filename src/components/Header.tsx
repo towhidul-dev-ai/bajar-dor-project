@@ -1,0 +1,59 @@
+
+import Image from "next/image";
+import React from "react";
+import Logo from "../../public/logo-icon.png";
+
+const Header = () => {
+  return (
+    <header className="border-b border-gray-200 bg-white">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        {/* Logo and Website Info */}
+        <div className="flex items-center gap-3">
+          {/* <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-green-700 p-1.5 shadow-sm"> */}
+            {/* <Image
+              src={Logo}
+              width={48}
+              height={48}
+              alt="বাজার দর লোগো"
+              priority
+              className="h-full w-full object-contain"
+            />
+          </div> */}
+
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-700 text-2xl">
+            🛒
+          </div>
+
+          <div>
+            <h1 className="text-2xl font-bold leading-tight tracking-tight text-gray-900">
+              বাজার দর
+            </h1>
+
+            <p className="mt-1 text-sm text-gray-500">
+              বুধবার, ৭ অক্টোবর, ২০২৬
+            </p>
+          </div>
+        </div>
+
+        {/* Authentication Buttons */}
+        <div className="flex shrink-0 items-center gap-3 sm:gap-6">
+          <button
+            type="button"
+            className="rounded-lg px-3 py-2.5 font-semibold text-gray-800 transition-colors hover:bg-green-50 hover:text-green-700"
+          >
+            সাইন ইন
+          </button>
+
+          <button
+            type="button"
+            className="rounded-xl bg-green-700 px-4 py-2.5 font-semibold text-white shadow-md transition-all duration-200 hover:bg-green-800 hover:shadow-lg active:scale-95 sm:px-5"
+          >
+            সাইন আপ
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;
