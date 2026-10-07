@@ -1,0 +1,251 @@
+// 'use client';
+// import { authClient } from '@/lib/auth-client';
+// import Link from 'next/link';
+// import React from 'react';
+
+// const ProfilePage = () => {
+//     const {data: session} = authClient.useSession()
+//         const user = session?.user
+//         console.log(user)
+//         const handleUpdateProfile = async(e:React.SubmitEvent<HTMLElement>)=>{
+//             e.preventDefault()
+//             const formData = new FormData(e.target);
+//             const newUserData = Object.fromEntries(formData.entries()) as {name: string}
+//             // console.log(newUserData)
+//             await authClient.updateUser({
+//                 ...newUserData
+//             })
+
+//         }
+//     return (
+//         <div className='mt-5 card bg-base-100'>
+//             <div className='flex flex-col items-center gap-2'>
+//             <Link href={'/profile'}>
+//             <div className="avatar">
+//   <div className="ring-primary ring-offset-base-100 w-10 rounded-full ring-2 ring-offset-2">
+//     <img alt="Tailwind-CSS-Avatar-component"
+//      src= {user?.image as string}
+//      />
+//   </div>
+// </div>
+                 
+//                  </Link>  
+//                  <h2>{user?.name}</h2>
+//                  <p>{user?.email}</p>
+//                                 <form onSubmit={handleUpdateProfile}>
+//         <fieldset className="fieldset   rounded-box w-md">
+//           <label className="label">নাম</label>
+//           <input
+//             name="name"
+//             type="text"
+//             className="input w-md"
+//             placeholder="রহিম উদ্দিন"
+//           />
+
+//           <button type="submit" className="btn text-white bg-red-700 mt-4 ">
+//             Update Profile
+//           </button>
+//         </fieldset>
+//       </form>
+//                  </div>
+      
+             
+//         </div>
+//     );
+// };
+
+// export default ProfilePage;
+
+
+"use client";
+
+import React, { useState } from "react";
+import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
+
+const ProfilePage = () => {
+  const { data: session, isPending } = authClient.useSession();
+
+  const user = session?.user;
+
+  const [loading, setLoading] = useState(false);
+
+  // Update Profile
+  const handleUpdateProfile = async (
+    e: React.SubmitEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    const name = formData.get("name") as string;
+
+    if (!name.trim()) {
+      toast.error("নাম লিখুন");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      await authClient.updateUser({
+        name: name.trim(),
+      });
+
+      toast.success("প্রোফাইল সফলভাবে আপডেট হয়েছে");
+    } catch (error) {
+      console.error(error);
+      toast.error("প্রোফাইল আপডেট করতে সমস্যা হয়েছে");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Sign Out
+  const handleSignOut = async () => {
+    try {
+      await authClient.signOut();
+
+      toast.success("সফলভাবে সাইন আউট হয়েছে");
+    } catch (error) {
+      console.error(error);
+
+      toast.error("সাইন আউট করতে সমস্যা হয়েছে");
+    }
+  };
+
+  // Loading
+  if (isPending) {
+    return (
+      <main className="min-h-screen bg-[#f5f9f5] px-4 py-10">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="text-gray-500">
+            লোড হচ্ছে...
+          </p>
+        </div>
+      </main>
+    );
+  }
+
+  // User is not logged in
+  if (!user) {
+    return (
+      <main className="min-h-screen bg-[#f5f9f5] px-4 py-10">
+        <div className="mx-auto max-w-4xl text-center">
+          <h1 className="text-2xl font-bold text-gray-900">
+            আপনার অ্যাকাউন্টে লগইন করুন
+          </h1>
+
+          <p className="mt-2 text-gray-500">
+            প্রোফাইল দেখতে হলে প্রথমে সাইন ইন করুন।
+          </p>
+        </div>
+      </main>
+    );
+  }
+
+  const firstLetter =
+    user.name?.charAt(0).toUpperCase() || "U";
+
+  return (
+    <main className="min-h-screen bg-[#f5f9f5] px-4 py-10">
+      <div className="mx-auto max-w-4xl">
+
+        {/* Page Heading */}
+        <div className="mb-7">
+          <h1 className="text-3xl font-bold text-gray-900">
+            আমার প্রোফাইল
+          </h1>
+
+          <p className="mt-1 text-gray-600">
+            আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন।
+          </p>
+        </div>
+
+        {/* User Information Card */}
+        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-7">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+
+            {/* User Info */}
+            <div className="flex items-center gap-4">
+
+              {/* Avatar */}
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-full bg-green-700 text-2xl font-semibold text-white">
+                {user.image ? (
+                  <img
+                    src={user.image}
+                    alt={user.name || "User"}
+                    className="h-full w-full object-cover"
+                  />
+                ) : (
+                  firstLetter
+                )}
+              </div>
+
+              {/* Name & Email */}
+              <div>
+                <h2 className="text-xl font-semibold text-gray-900">
+                  {user.name}
+                </h2>
+
+                <p className="mt-1 text-sm text-gray-500 sm:text-base">
+                  {user.email}
+                </p>
+              </div>
+            </div>
+
+            {/* Sign Out */}
+            <button
+              type="button"
+              onClick={handleSignOut}
+              className="rounded-lg border border-red-400 px-5 py-2.5 font-semibold text-red-500 transition hover:bg-red-50"
+            >
+              ↪ সাইন আউট
+            </button>
+          </div>
+        </div>
+
+        {/* Update Name Card */}
+        <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-7">
+
+          <h2 className="text-2xl font-bold text-gray-900">
+            নাম হালনাগাদ করুন
+          </h2>
+
+          <form
+            onSubmit={handleUpdateProfile}
+            className="mt-6"
+          >
+            <label
+              htmlFor="name"
+              className="mb-2 block text-gray-700"
+            >
+              নাম
+            </label>
+
+            <input
+              id="name"
+              name="name"
+              type="text"
+              defaultValue={user.name || ""}
+              placeholder="রহিম উদ্দিন"
+              className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+            />
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="mt-4 rounded-lg bg-green-700 px-5 py-3 font-semibold text-white shadow-sm transition hover:bg-green-800 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {loading
+                ? "আপডেট হচ্ছে..."
+                : "নাম হালনাগাদ করুন"}
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+  );
+};
+
+export default ProfilePage;
