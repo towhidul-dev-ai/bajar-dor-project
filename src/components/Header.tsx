@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import Logo from "../../public/logo-icon.png";
+import NavLinks from "./NavLinks";
 
 const Header = () => {
   return (
@@ -52,6 +53,8 @@ const Header = () => {
           </button>
         </div>
       </div>
+
+      <NavLinks></NavLinks>
     </header>
   );
 };
