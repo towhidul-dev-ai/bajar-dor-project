@@ -22,7 +22,7 @@ const NavLinks = async () => {
         {data.map((category) => (
           <Link
             key={category.id}
-            href={`/category/${category.slug}`}
+            href={`/category/${category?.slug}`}
             className="flex shrink-0 items-center gap-2 whitespace-nowrap text-base font-semibold text-gray-800 transition-colors hover:text-green-700"
           >
             <span className="text-xl">{category.icon}</span>
