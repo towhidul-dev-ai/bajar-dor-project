@@ -1,6 +1,8 @@
 import Banner from "@/components/Banner";
+import HomeAllProducts from "@/components/HomeAllProducts";
 import Marquee from "@/components/Marquee";
 import ProductSection from "@/components/ProductSection";
+
 
 interface Product {
   id: number;
@@ -29,14 +31,14 @@ interface Product {
 
 const getProducts = async (): Promise<Product[]> => {
   const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products"
+    "https://api.abcz.workers.dev/api/bazardor/products"
   );
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch products");
-  }
+  // if (!res.ok) {
+  //   throw new Error("Failed to fetch products");
+  // }
 
-  const data = await res.json();
+  const data: Product[] = await res.json();
 
   return data;
 };
@@ -83,12 +85,16 @@ export default async function Home() {
         />
 
         {/* Section C - All Products */}
-        <ProductSection
+        
+        <HomeAllProducts products={products} />
+        
+        {/* <ProductSection
+          id="সব-পণ্য"
           title="সব পণ্য"
           icon="🛒"
           subtitle="সকল পণ্যের আজকের বাজারদর এক নজরে দেখুন"
           products={products}
-        />
+        /> */}
 
       </div>
 

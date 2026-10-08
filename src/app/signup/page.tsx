@@ -1,92 +1,3 @@
-// 'use client';
-// import { authClient } from '@/lib/auth-client';
-// import { redirect } from 'next/navigation';
-// import React from 'react';
-
-// const SignUpPage = () => {
-//     const onSubmit = async (e:React.SubmitEvent<HTMLElement>) => {
-//       e.preventDefault()
-//       const formData = new FormData(e.target)
-//       const user = Object.fromEntries(formData.entries()) as {name: string, email: string, password: string,}
-//     //   console.log(user);
-//     const {data, error} = await authClient.signUp.email({
-//         ...user,
-//         callbackURL: "/"
-//      })
-
-//      if(data){
-//         console.log(data)
-//         redirect('/')
-        
-//      }
-//      if(error){
-//         console.log(error)
-//      }
-//     }
-//     const handleGoogleSignIn = async() => {
-//             const data = await authClient.signIn.social({
-//             provider: "google",
-//               });
-//               console.log(data)
-//            }
-         
-    
-//            const handleGithubSignIn = async ()=>{
-//              const data = await authClient.signIn.social({
-//             provider: "github",
-//               });
-//               console.log(data)
-    
-//            }
-//     return (
-//          <div className="flex flex-col items-center justify-center mt-5">
-//       <h2 className="text-2xl font-bold text-red-700">সাইন আপ</h2>
-//       <form onSubmit={onSubmit}>
-//         <fieldset className="fieldset   rounded-box w-md">
-//           <label className="label">নাম</label>
-//           <input
-//             name="name"
-//             type="text"
-//             className="input w-md"
-//             placeholder="রহিম উদ্দিন"
-//           />
-
-//           <label className="label">ইমেইল</label>
-//           <input
-//             name="email"
-//             type="email"
-//             className="input w-md"
-//             placeholder="you@example.com"
-//           />
-
-//           <label className="label">পাসওয়ার্ড</label>
-//           <input
-//             name="password"
-//             type="password"
-//             className="input w-md"
-//             placeholder="কমপক্ষে ৮ অক্ষর"
-//           />
-//           <label className="label">পাসওয়ার্ড নিশ্চিত করুন</label>
-//           <input
-//             name="password"
-//             type="password"
-//             className="input w-md"
-//             placeholder="আবার লিখুন"
-//           />
-
-//           <button type="submit" className="btn text-white bg-red-700 mt-4 ">
-//             অ্যাকাউন্ট তৈরি করুন
-//           </button>
-//         </fieldset>
-//       </form>
-
-//           <button onClick={handleGoogleSignIn} className="btn ">Sign In With Google</button>
-//       <button onClick={handleGithubSignIn} className="btn ">Sign In With Github</button> 
-//     </div>
-//     );
-// };
-
-// export default SignUpPage;
  "use client";
 
 import { authClient } from "@/lib/auth-client";
@@ -166,12 +77,12 @@ const SignUpPage = () => {
 
         {/* Heading */}
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-gray-900 md:text-4xl">
-            সাইন আপ
+          <h1 className="text-2xl font-bold text-gray-900 md:text-3xl">
+            অ্যাকাউন্ট তৈরি করুন
           </h1>
 
           <p className="mt-2 text-sm text-gray-500 md:text-base">
-            বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্ট তৈরি করুন।
+           বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন।
           </p>
         </div>
 
@@ -190,7 +101,7 @@ const SignUpPage = () => {
                 type="text"
                 required
                 className="input w-full"
-                placeholder="রহিম উদ্দিন"
+                placeholder="যেমন: রহিম উদ্দিন"
               />
             </fieldset>
 
@@ -280,7 +191,7 @@ const SignUpPage = () => {
 
           {/* Sign In */}
           <p className="mt-6 text-center text-sm text-gray-500">
-            অ্যাকাউন্ট নেই?{" "}
+            অ্যাকাউন্ট আছে?{" "}
             <Link
               href="/signin"
               className="font-semibold text-[#05893E] hover:underline"

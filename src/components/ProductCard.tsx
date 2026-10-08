@@ -89,7 +89,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
           {/* Change Badge */}
           {product.change.dir === "up" && (
             <span className="shrink-0 rounded-full bg-red-50 px-3 py-1.5 text-sm font-semibold text-red-600">
-              ▲ {product.change.pct.toLocaleString("bn-BD")}%
+              <span className="text-red-600">▲</span>{" "}
+               {product.change.pct.toLocaleString("bn-BD")}%
             </span>
           )}
 

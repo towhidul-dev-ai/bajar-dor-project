@@ -169,8 +169,7 @@ const SignInPage = () => {
           </h1>
 
           <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-gray-500 md:text-base">
-            বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে আপনার
-            অ্যাকাউন্টে প্রবেশ করুন।
+            বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্টে ঢুকুন।
           </p>
         </div>
 

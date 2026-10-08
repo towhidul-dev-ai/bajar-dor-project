@@ -15,13 +15,14 @@ interface Product {
 }
 
 const Marquee = async () => {
-  const res = await fetch("https://api.api-store.workers.dev/api/bazardor/products");
+  const res = await fetch("https://api.abcz.workers.dev/api/bazardor/products");
 
   const data: Product[] = await res.json();
   
   return (
     <div className="border-b border-base-300 bg-base-100 py-3">
-      <MarqueeText className="py-1" direction="right" duration={5}>
+      <MarqueeText className="py-1" direction="right" duration={10}
+      pauseOnHover={true}>
         {data.map((product) => (
           <span
             key={product.id}
