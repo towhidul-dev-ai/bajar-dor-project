@@ -15,5 +15,5 @@ if(!user){
 }
  
 export const config = {
-  matcher: ['/profile', "/category/:path"],
+  matcher: ['/profile', "/prodcut/:path*"],
 }

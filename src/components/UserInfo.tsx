@@ -64,6 +64,7 @@
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 const UserInfo = () => {
   const { data: session } = authClient.useSession();
@@ -72,9 +73,17 @@ const UserInfo = () => {
 
   const [open, setOpen] = useState(false);
 
+  // Sign Out
   const handleSignOut = async () => {
-    await authClient.signOut();
+    const { error } = await authClient.signOut();
+
+    if (error) {
+      toast.error("সাইন আউট করতে সমস্যা হয়েছে।");
+      return;
+    }
+
     setOpen(false);
+    toast.success("সফলভাবে সাইন আউট হয়েছে!");
   };
 
   // User is not logged in

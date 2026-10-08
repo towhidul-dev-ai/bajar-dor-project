@@ -1,30 +1,3 @@
-// import Banner from "@/components/Banner";
-// import Marquee from "@/components/Marquee";
-// import Image from "next/image";
-
-// const getProducts = async() => {
-//   const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products');
-//   const data = await res.json();
-//   return data;
-// }
-
-// export default async function Home() {
-//   const products = await getProducts()
-//   // console.log(products)
-//   const upProducts = products.filter(p=> p.change.dir == 'up' );
-//   console.log(upProducts);
-//   return (
-//     <div>
-//       <Marquee></Marquee>
-//       <Banner></Banner>
-//      {/* up products */}
-//      <div>
-//       <p>আজ দাম বেড়েছে</p>
-//      </div>
-//     </div>
-//   );
-// }
-
 import Banner from "@/components/Banner";
 import Marquee from "@/components/Marquee";
 import ProductSection from "@/components/ProductSection";
