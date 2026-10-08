@@ -6,9 +6,9 @@
 
 ## 🌐 Live Demo
 
-🔗 **Live Website:** [Add your Vercel Live Link here]
+🔗 **Live Website: https://bajar-dor-project.vercel.app/
 
-🔗 **GitHub Repository:** [Add your GitHub Repository Link here]
+🔗 **GitHub Repository: https://github.com/towhidul-dev-ai/bajar-dor-project
 
 ---
 
