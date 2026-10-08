@@ -4,6 +4,10 @@ import Link from "next/link";
 import React from "react";
 
 const HomeLink = () => {
+  const date = new Date().toLocaleDateString("bn-BD", {
+    dateStyle: "full",
+  });
+
   const handleClick = () => {
     window.scrollTo(0, 0);
   };
@@ -24,7 +28,7 @@ const HomeLink = () => {
         </h1>
 
         <p className="mt-1 text-sm text-gray-500">
-          বুধবার, ৭ অক্টোবর, ২০২৬
+          {date}
         </p>
       </div>
     </Link>
