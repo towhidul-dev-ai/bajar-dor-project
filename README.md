@@ -1,36 +1,145 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 বাজার দর | BazarDor
 
-## Getting Started
+**বাজার দর** হলো একটি আধুনিক দৈনন্দিন পণ্যের মূল্য পর্যবেক্ষণ ও তুলনা করার ওয়েব অ্যাপ্লিকেশন। এখানে ব্যবহারকারীরা বিভিন্ন প্রয়োজনীয় পণ্যের বর্তমান বাজারমূল্য, মূল্য পরিবর্তন, ক্যাটাগরি এবং বিভিন্ন বাজারভিত্তিক দাম সহজে দেখতে পারবেন।
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🌐 Live Demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🔗 **Live Website:** [Add your Vercel Live Link here]
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+🔗 **GitHub Repository:** [Add your GitHub Repository Link here]
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📖 About The Project
 
-To learn more about Next.js, take a look at the following resources:
+**BazarDor (বাজার দর)** বাংলাদেশের দৈনন্দিন প্রয়োজনীয় পণ্যের বাজারদর এক নজরে দেখার জন্য তৈরি করা হয়েছে।
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+অ্যাপ্লিকেশনটিতে চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম-দুধ এবং মসলাসহ বিভিন্ন ক্যাটাগরির পণ্যের বর্তমান মূল্য এবং মূল্য পরিবর্তন দেখানো হয়।
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+ব্যবহারকারীরা:
 
-## Deploy on Vercel
+- বিভিন্ন ক্যাটাগরি অনুযায়ী পণ্য দেখতে পারবেন
+- আজকের দাম এবং গতকালের দামের পরিবর্তন দেখতে পারবেন
+- পণ্যের বিস্তারিত তথ্য দেখতে পারবেন
+- বিভিন্ন বাজারের দাম তুলনা করতে পারবেন
+- নিজের প্রোফাইল পরিচালনা করতে পারবেন
+- Email/Password এবং Social Login ব্যবহার করে authentication করতে পারবেন
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ✨ Key Features
+
+### 1. 📊 Live Product Price Tracking
+
+বিভিন্ন প্রয়োজনীয় পণ্যের বর্তমান বাজারমূল্য এবং মূল্য পরিবর্তন দেখা যায়।
+
+- আজকের দাম
+- গতকালের দাম
+- মূল্য বৃদ্ধি/হ্রাস
+- Percentage change
+- Price trend indicator
+
+---
+
+### 2. 🗂️ Category Based Products
+
+পণ্যগুলো বিভিন্ন ক্যাটাগরিতে ভাগ করা হয়েছে।
+
+- 🍚 চাল
+- 🫘 ডাল
+- 🛢️ তেল
+- 🥬 সবজি
+- 🐟 মাছ
+- 🍗 মাংস
+- 🥛 ডিম-দুধ
+- 🌶️ মসলা
+
+প্রতিটি ক্যাটাগরির জন্য আলাদা dynamic route রয়েছে।
+
+---
+
+### 3. 🔎 Product Details & Market Comparison
+
+প্রতিটি পণ্যের জন্য বিস্তারিত তথ্য দেখা যায়।
+
+Product details page-এ রয়েছে:
+
+- Product name
+- Category
+- Unit
+- Minimum price
+- Maximum price
+- Average price
+- Market-wise prices
+- Price change information
+
+---
+
+### 4. 🔐 Authentication & User Profile
+
+Better Auth ব্যবহার করে নিরাপদ authentication system তৈরি করা হয়েছে।
+
+Supported authentication:
+
+- Email & Password
+- Google Login
+- GitHub Login
+
+Authenticated users:
+
+- Profile দেখতে পারবেন
+- নিজের নাম update করতে পারবেন
+- Sign out করতে পারবেন
+- Protected product details দেখতে পারবেন
+
+---
+
+### 5. 📱 Fully Responsive Design
+
+ওয়েবসাইটটি বিভিন্ন screen size-এর জন্য responsive।
+
+Supported devices:
+
+- 📱 Mobile
+- 📲 Tablet
+- 💻 Laptop
+- 🖥️ Desktop
+
+Tailwind CSS ব্যবহার করে responsive layout তৈরি করা হয়েছে।
+
+---
+
+## 🚀 Additional Features
+
+- 🔄 Loading skeleton
+- 🔔 Toast notifications
+- 🔍 Dynamic product routes
+- 🗂️ Dynamic category routes
+- ↕️ Product price sorting
+- ❌ Custom 404 page
+- 🏠 Home page navigation
+- 📜 Price ticker
+- 👤 User profile management
+- 🔒 Protected routes
+- 📱 Responsive navigation
+- ⚡ Fast page navigation with Next.js App Router
+
+---
+
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| **Next.js** | Frontend framework and application development |
+| **React** | Building UI components |
+| **TypeScript** | Type-safe development |
+| **Tailwind CSS** | Styling and responsive design |
+| **DaisyUI** | UI components |
+| **Better Auth** | Authentication and user management |
+| **React Hot Toast** | Toast notifications |
+| **Next.js App Router** | Routing and navigation |
+| **REST API** | Product and category data |
+| **Vercel** | Deployment |
+
