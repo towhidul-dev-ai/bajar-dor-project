@@ -6,7 +6,7 @@
 
 ## 🌐 Live Demo
 
-🔗 **Live Website: https://bajar-dor-project.vercel.app/
+🔗 **Live Website: https://bajar-dor-project-nc2c.vercel.app/
 
 🔗 **GitHub Repository: https://github.com/towhidul-dev-ai/bajar-dor-project
 
